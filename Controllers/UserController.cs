@@ -116,12 +116,9 @@ namespace CRUD_application_2.Controllers
         // Search a user from the list
         public ActionResult Search(string term)
         {
-            // Implement the Search method here
-            // This method is responsible for searching for a user based on the provided search term.
-            // It filters the userlist based on the search term and passes the filtered list to the Search view.
-            // The Search view displays the search results.
-            var searchResults = userlist.Where(x => x.Name.Contains(term) || x.Email.Contains(term)).ToList();
-            return View(searchResults);
+           // search the user from the list then display the user matched
+           var searchResult = userlist.Where(x => x.Name.Contains(term) || x.Email.Contains(term)).ToList();
+            return View("Index", searchResult);
         }
     }
 }
